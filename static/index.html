@@ -3,35 +3,67 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Camille, tuteur de français</title>
 <link rel="stylesheet" href="/static/style.css">
-<script type="importmap">
-{ "imports": {
+<script type="importmap">{ "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.176.0/build/three.module.js",
   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.176.0/examples/jsm/",
-  "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3/lib/three-vrm.module.min.js"
-} }
-</script>
-</head><body><main>
-<header>
-  <select id="level" aria-label="Niveau"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
-  <input id="theme" value="la vie quotidienne" aria-label="Thème">
-  <input id="l1" placeholder="Langue maternelle (facultatif)" aria-label="Langue maternelle">
-</header>
-<div id="avatar"><canvas id="cv"></canvas></div>
-<p id="etat" aria-live="polite">Prêt(e)</p>
-<div id="chat" aria-live="polite"></div>
-<form id="form">
-  <input id="texte" placeholder="Écrivez en français…" autocomplete="off" aria-label="Message">
-  <button>Envoyer</button>
-  <button type="button" id="mic">Parler</button>
-</form>
-<nav>
-  <button id="btn-explain">Expliquer une notion</button>
-  <button id="btn-exo">Exercices</button>
-  <button id="btn-bilan">Terminer la leçon</button>
-  <button id="btn-prog">Ma progression</button>
-</nav>
-</main>
+  "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3/lib/three-vrm.module.min.js" } }</script>
+</head><body>
+
+<section id="v-auth" class="centre" hidden>
+  <form id="f-auth" class="carte">
+    <h1>Camille</h1><p class="mute">Votre tuteur de français, de A1 à C2</p>
+    <input id="nom" placeholder="Prénom" aria-label="Prénom" hidden>
+    <input id="email" type="email" placeholder="E-mail" aria-label="E-mail" required autocomplete="email">
+    <input id="pwd" type="password" placeholder="Mot de passe (8 caractères min.)" aria-label="Mot de passe" required minlength="8" autocomplete="current-password">
+    <p id="auth-err" class="erreur" role="alert"></p>
+    <button id="auth-ok" class="primaire">Se connecter</button>
+    <button type="button" id="bascule" class="lien">Créer un compte</button>
+  </form>
+</section>
+
+<section id="v-app" hidden>
+  <aside>
+    <button id="nouveau" class="primaire">+ Nouvelle session</button>
+    <nav id="liste" aria-label="Conversations"></nav>
+    <p id="hello" class="mute"></p><button id="logout" class="lien">Se déconnecter</button>
+  </aside>
+  <main>
+    <div id="p-setup">
+      <form id="f-setup" class="carte">
+        <h2>Que voulez-vous faire ?</h2>
+        <div id="modes" class="modes">
+          <button type="button" data-m="chat" aria-pressed="true">Conversation sur un thème</button>
+          <button type="button" data-m="explain" aria-pressed="false">Expliquer une notion</button>
+          <button type="button" data-m="exercise" aria-pressed="false">Créer des exercices</button>
+        </div>
+        <label><span id="theme-lab">Thème de la conversation</span>
+          <input id="theme" placeholder="ex : au restaurant, voyage, entretien d'embauche"></label>
+        <div class="deux">
+          <label>Niveau<select id="level"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+          <label>Langue maternelle<input id="l1" list="langues" placeholder="ex : arabe"></label>
+        </div>
+        <datalist id="langues"><option>arabe</option><option>anglais</option><option>espagnol</option><option>chinois</option><option>russe</option><option>portugais</option><option>turc</option></datalist>
+        <label>Votre objectif<input id="objectif" placeholder="ex : travailler en France, réussir le DELF B2"></label>
+        <label class="ligne"><input type="checkbox" id="avatar-on"> Afficher l'avatar 3D (facultatif)</label>
+        <p id="setup-err" class="erreur" role="alert"></p>
+        <button class="primaire">Commencer</button>
+      </form>
+    </div>
+    <div id="p-conv" hidden>
+      <h2 id="titre"></h2>
+      <div id="avatarzone" hidden></div>
+      <p id="etat" class="mute">Prêt(e)</p>
+      <div id="chat" aria-live="polite"></div>
+      <form id="f-conv" class="barre">
+        <input id="texte" autocomplete="off" aria-label="Message">
+        <button class="primaire">Envoyer</button>
+        <button type="button" id="mic">Parler</button>
+      </form>
+    </div>
+  </main>
+</section>
+
 <audio id="player"></audio>
 <script src="/static/app.js"></script>
-<script type="module" src="/static/avatar3d.js"></script>
+<script src="/static/voice.js"></script>
 </body></html>
