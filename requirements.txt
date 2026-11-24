@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+httpx
+python-dotenv
+python-multipart
+piper-tts
+mlx-whisper; sys_platform == "darwin" and platform_machine == "arm64"

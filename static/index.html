@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Camille, tuteur de français</title>
+<link rel="stylesheet" href="/static/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.176.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.176.0/examples/jsm/",
+  "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3/lib/three-vrm.module.min.js"
+} }
+</script>
+</head><body><main>
+<header>
+  <select id="level" aria-label="Niveau"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
+  <input id="theme" value="la vie quotidienne" aria-label="Thème">
+  <input id="l1" placeholder="Langue maternelle (facultatif)" aria-label="Langue maternelle">
+</header>
+<div id="avatar"><canvas id="cv"></canvas></div>
+<p id="etat" aria-live="polite">Prêt(e)</p>
+<div id="chat" aria-live="polite"></div>
+<form id="form">
+  <input id="texte" placeholder="Écrivez en français…" autocomplete="off" aria-label="Message">
+  <button>Envoyer</button>
+  <button type="button" id="mic">Parler</button>
+</form>
+<nav>
+  <button id="btn-explain">Expliquer une notion</button>
+  <button id="btn-exo">Exercices</button>
+  <button id="btn-bilan">Terminer la leçon</button>
+  <button id="btn-prog">Ma progression</button>
+</nav>
+</main>
+<audio id="player"></audio>
+<script src="/static/app.js"></script>
+<script type="module" src="/static/avatar3d.js"></script>
+</body></html>

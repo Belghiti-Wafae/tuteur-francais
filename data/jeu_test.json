@@ -1,0 +1,6 @@
+[
+ {"niveau":"A2","phrase":"Hier je suis allé au cinéma avec mes amie","attendu":"Hier je suis allé au cinéma avec mes amis","nb_erreurs":1},
+ {"niveau":"A1","phrase":"Je suis habite à Rabat","attendu":"J'habite à Rabat","nb_erreurs":1},
+ {"niveau":"B1","phrase":"Il faut que tu vas chez le médecin","attendu":"Il faut que tu ailles chez le médecin","nb_erreurs":1},
+ {"niveau":"A2","phrase":"Nous avons mangé au restaurant hier soir","attendu":"Nous avons mangé au restaurant hier soir","nb_erreurs":0}
+]

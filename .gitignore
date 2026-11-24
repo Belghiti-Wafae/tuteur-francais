@@ -1,0 +1,10 @@
+venv/
+.env
+__pycache__/
+*.pyc
+*.db
+*.wav
+.DS_Store
+data/voix/*.onnx
+data/voix/*.onnx.json
+static/avatar.vrm
